@@ -24,8 +24,7 @@ export const todoSlice = createSlice({
       state.todoList = action.payload;
     },
     add: (state, action) => {
-      console.log('asdf', state);
-      state.todoList = [...state.todoList, action.payload];
+      state.todoList.push(action.payload);
     },
     remove: (state, action) => {
       state.todoList = state.todoList.filter(
@@ -45,7 +44,7 @@ export const todoSlice = createSlice({
       }
     ) => {
       state.status = 'success';
-      state.todoList = action.payload;
+      state.todoList = action.payload ?? [];
     },
   },
 });

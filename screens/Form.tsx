@@ -28,6 +28,7 @@ export const Form = ({ navigation }: NavigationProps) => {
       : JSON.stringify([todoItem]);
     // Update storage
     await AsyncStorage.setItem('todoList', updated);
+    navigation.navigate('home');
   };
 
   return (
