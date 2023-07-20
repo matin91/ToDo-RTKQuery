@@ -4,7 +4,7 @@ import { Button, ScrollView, Text, TextInput, View } from 'react-native';
 import BouncyCheckbox from 'react-native-bouncy-checkbox';
 
 import { useAppDispatch, useAppSelector } from '../Redux/hooks';
-import { add } from '../Redux/todo/todoSliceAsyncStorage';
+import { add } from '../Redux/slices/todoSliceAsyncStorage';
 import { NavigationProps } from '../types/RootStackParams';
 import styles from './styles';
 
@@ -16,7 +16,7 @@ export const Form = ({ navigation }: NavigationProps) => {
   const { todoList } = useAppSelector((state) => state.todoAsyncStorage);
 
   const addTask = async () => {
-    // Create todo obj
+    // Create slices obj
     const id = todoList?.length ? todoList[todoList.length - 1].id + 1 : 1;
     const todoItem = { id, title, body, urgent };
     // Update state

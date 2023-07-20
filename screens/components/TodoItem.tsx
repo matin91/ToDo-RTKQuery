@@ -3,7 +3,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import React from 'react';
 import { Text, View } from 'react-native';
 import { useAppDispatch } from '../../Redux/hooks';
-import { remove } from '../../Redux/todo/todoSliceAsyncStorage';
+import { remove } from '../../Redux/slices/todoSliceAsyncStorage';
 import { TodoObject } from '../../types/TodoObject';
 import styles from './styles';
 

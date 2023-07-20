@@ -4,7 +4,7 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { Button, ScrollView, Text, View } from 'react-native';
 import { NavigationProps } from '../types/RootStackParams';
 import { useAppSelector } from '../Redux/hooks';
-import { fetchTodos } from '../Redux/todo/todoSliceAsyncStorage';
+import { fetchTodos } from '../Redux/slices/todoSliceAsyncStorage';
 import styles from './components/styles';
 import { TodoItem } from './components';
 

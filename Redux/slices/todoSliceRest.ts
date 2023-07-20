@@ -28,7 +28,7 @@ export const fetchTodo = createAsyncThunk<
   const response = await axios('https://jsonplaceholder.typicode.com/todos');
 
   if (!response) {
-    return rejectWithValue('Error fetch todo');
+    return rejectWithValue('Error fetch slices');
   }
   return await response.data;
 });
@@ -46,7 +46,7 @@ export const addTodo = createAsyncThunk<Todo, string, { rejectValue: string }>(
     );
 
     if (!response) {
-      return rejectWithValue('Error add todo');
+      return rejectWithValue('Error add slices');
     }
 
     return (await response.data) as Todo;
@@ -66,7 +66,7 @@ export const toggleTodo = createAsyncThunk<
     );
 
     if (!response) {
-      return rejectWithValue('Error toggle todo');
+      return rejectWithValue('Error toggle slices');
     }
 
     return (await response.data) as Todo;
@@ -85,7 +85,7 @@ export const removeTodo = createAsyncThunk<
   );
 
   if (!response) {
-    return rejectWithValue('Error delete todo');
+    return rejectWithValue('Error delete slices');
   }
   return id;
 });
