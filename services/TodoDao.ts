@@ -1,11 +1,4 @@
-interface Todo {
-  id: number;
-  userId: number;
-  title: string;
-  completed: boolean;
-}
-
-export type TodoInfo = Omit<Todo, 'id' | 'userId'>;
+import { TodoObject } from '../types/TodoObject';
 
 export class TodoDAO {
   delete = (id: number): Promise<void> => {
@@ -19,7 +12,7 @@ export class TodoDAO {
     }).then((r) => r.json());
   };
 
-  save = (todo: Todo): Promise<Todo> => {
+  save = (todo: TodoObject): Promise<TodoObject> => {
     const url = process.env.REACT_APP_URL_TODO || '';
     return fetch(url, {
       method: 'POST',
@@ -30,7 +23,7 @@ export class TodoDAO {
     }).then((r) => r.json());
   };
 
-  getAll = (): Promise<Todo[]> => {
+  getAll = (): Promise<TodoObject[]> => {
     return fetch(process.env.REACT_APP_URL_TODO || '').then((r) => r.json());
   };
 }

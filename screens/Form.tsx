@@ -1,10 +1,10 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useState } from 'react';
-import { Button, Text, TextInput, View } from 'react-native';
+import { Button, ScrollView, Text, TextInput, View } from 'react-native';
 import BouncyCheckbox from 'react-native-bouncy-checkbox';
 
 import { useAppDispatch, useAppSelector } from '../Redux/hooks';
-import { add } from '../Redux/todo/todoSlice';
+import { add } from '../Redux/todo/todoSliceAsyncStorage';
 import { NavigationProps } from '../types/RootStackParams';
 import styles from './styles';
 
@@ -13,7 +13,7 @@ export const Form = ({ navigation }: NavigationProps) => {
   const [body, setBody] = useState('');
   const [urgent, setUrgent] = useState(false);
   const dispatch = useAppDispatch();
-  const { todoList } = useAppSelector((state) => state.todoList);
+  const { todoList } = useAppSelector((state) => state.todoAsyncStorage);
 
   const addTask = async () => {
     // Create todo obj
@@ -32,7 +32,7 @@ export const Form = ({ navigation }: NavigationProps) => {
   };
 
   return (
-    <>
+    <ScrollView>
       <View style={styles.back}>
         <Button
           title="< Back"
@@ -64,6 +64,6 @@ export const Form = ({ navigation }: NavigationProps) => {
           <Button title="Submit" color="black" onPress={() => addTask()} />
         </View>
       </View>
-    </>
+    </ScrollView>
   );
 };

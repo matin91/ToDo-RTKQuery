@@ -3,4 +3,6 @@ export type TodoObject = {
   title: string;
   body: string;
   urgent: boolean;
+  userId: number;
+  completed: boolean;
 };

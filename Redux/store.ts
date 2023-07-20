@@ -1,8 +1,10 @@
 import { combineReducers, configureStore } from '@reduxjs/toolkit';
-import todoReducer from './todo/todoSlice';
+import todoAsyncStorageReducer from './todo/todoSliceAsyncStorage';
+import todoSliceRestReducer from './todo/todoSliceRest';
 
 const rootReducer = combineReducers({
-  todoList: todoReducer,
+  todoAsyncStorage: todoAsyncStorageReducer,
+  todoRest: todoSliceRestReducer,
 });
 
 export const store = configureStore({

@@ -16,8 +16,8 @@ export const fetchTodos = createAsyncThunk('todos/getTodos', async () => {
   return AsyncStorage.getItem('todoList').then((res) => res && JSON.parse(res));
 });
 
-export const todoSlice = createSlice({
-  name: 'todo',
+export const todoSliceAsyncStorage = createSlice({
+  name: 'todoAsyncStorage',
   initialState,
   reducers: {
     fetch: (state, action) => {
@@ -32,23 +32,17 @@ export const todoSlice = createSlice({
       );
     },
   },
-  extraReducers: {
-    [fetchTodos.pending as any]: (state: TodoState) => {
-      state.status = 'loading';
-    },
-    [fetchTodos.fulfilled as any]: (
-      state: TodoState,
-      action: {
-        payload: any;
-        type: string;
-      }
-    ) => {
-      state.status = 'success';
-      state.todoList = action.payload ?? [];
-    },
-  },
+  extraReducers: (builder) =>
+    builder
+      .addCase(fetchTodos.pending, (state) => {
+        state.status = 'loading';
+      })
+      .addCase(fetchTodos.fulfilled, (state, action) => {
+        state.todoList = action.payload;
+        state.status = 'success';
+      }),
 });
 
-export const { add, remove, fetch } = todoSlice.actions;
+export const { add, remove, fetch } = todoSliceAsyncStorage.actions;
 
-export default todoSlice.reducer;
+export default todoSliceAsyncStorage.reducer;
